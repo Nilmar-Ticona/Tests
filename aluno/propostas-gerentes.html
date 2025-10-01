@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Propostas de Gerentes</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h2>Propostas de Gerentes</h2>
+  </header>
+
+  <main>
+    <div class="proposta-card" data-inicio="2025-10-07" data-duracao="17">
+      <h3>Gerente: Ana Souza</h3>
+      <p>Projeto: Marketing Digital para Cosméticos</p>
+      <p>Descrição: Criação de campanha para redes sociais e landing page.</p>
+      <p>Início: <span class="data-inicio">07/10/2025</span></p>
+      <p>Prazo: <span class="dias"></span> dias (até DD/MM/YYYY<span class="data-fim"></span>)</p>
+      <p>Remuneração: R$ 1.250,00</p>
+      <div class="acoes">
+        <button class="btn-aceitar">Aceitar</button>
+        <button class="btn-recusar">Recusar</button>
+      </div>
+    </div>
+
+    <div class="proposta-card" data-inicio="2025-10-12" data-duracao="22">
+      <h3>Gerente: Carlos Lima</h3>
+      <p>Projeto: Sistema de Gestão de Tarefas</p>
+      <p>Descrição: Painel administrativo com login, permissões e relatórios.</p>
+      <p>Início: <span class="data-inicio">12/10/2025</span></p>
+      <p>Prazo: <span class="dias"></span> dias DD/MM/YYYY(até <span class="data-fim"></span>)</p>
+      <p>Remuneração: R$ 1.430,00</p>
+      <div class="acoes">
+        <button class="btn-aceitar">Aceitar</button>
+        <button class="btn-recusar">Recusar</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <a href="../index.html">← Voltar ao Dashboard</a>
+  </footer>
+
+  <script src="../scripts/calcula-prazos.js"></script>
+  <script>
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('btn-aceitar')) {
+        if (confirm('Confirmar aceitação da proposta?')) {
+          const mensagem = prompt('Escreva uma mensagem para o gerente:', '');
+          if (mensagem !== null) {
+            alert('Mensagem enviada ao gerente.');
+          }
+          window.location.href = '../aluno/meus-projetos.html';
+        }
+      }
+      if (e.target.classList.contains('btn-recusar')) {
+        const card = e.target.closest('.proposta-card');
+        if (confirm('Confirmar recusa da proposta?')) {
+          card.style.transition = 'opacity 0.3s';
+          card.style.opacity = 0;
+          setTimeout(() => card.remove(), 300);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
